@@ -1,3 +1,4 @@
+import FeatureProperties, { FeaturedTab } from "@/components/FeatureProperties";
 import FeaturedCard from "@/components/FeaturedCard";
 import HorizotalLine from "@/components/HorizontalLine";
 import TrendingPropertyCard from "@/components/TrendingPropertyCard";
@@ -55,21 +56,10 @@ const Main = () => {
             </ScrollView>
           </View>
           <View style={styles.trendingWrapper}>
-            <Text
-              style={[
-                { fontWeight: "600", fontSize: 20 },
-                styles.trendingWrapper,
-              ]}
-            >
+            <Text style={{ fontWeight: "600", fontSize: 20 }}>
               Featured Properties
             </Text>
-            {FEATUREDPROPERTIES.map((property: any) => {
-              return (
-                <View>
-                  <FeaturedCard property={property} />
-                </View>
-              );
-            })}
+            <FeaturedTab />
           </View>
         </ScrollView>
       </View>

@@ -7,8 +7,7 @@ import { StyleSheet } from "react-native";
 
 const LoginScreen = () => {
   const handleLogin = () => {
-    console.log("asfas");
-    router.replace("/(properties)/main");
+    router.replace("/(properties)/(main)/home");
   };
 
   return (
@@ -19,13 +18,13 @@ const LoginScreen = () => {
       />
       <View style={style.btnWrapper}>
         <ThemeButton
-          title="Sign in with Phone Number"
+          title='Sign in with Phone Number'
           handleButton={handleLogin}
         />
         <ThemeButton
-          title="sign in with Apple ID"
+          title='Sign in with Apple ID'
           handleButton={handleLogin}
-          type="secondary"
+          type='secondary'
           children={
             <Image
               source={require("@/assets/images/apple.png")}

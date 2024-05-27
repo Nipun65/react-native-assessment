@@ -1,22 +1,95 @@
-import { Stack, Tabs } from "expo-router";
+import { Tabs } from "expo-router";
 import React from "react";
 
-import { TabBarIcon } from "@/components/navigation/TabBarIcon";
-import { Colors } from "@/constants/Colors";
-import { useColorScheme } from "@/hooks/useColorScheme";
+import { Image, View } from "react-native";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Stack>
-      <Stack.Screen name="main" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="explore"
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: "white",
+        tabBarStyle: {
+          backgroundColor: "#000000",
+        },
+      }}
+    >
+      <Tabs.Screen
+        name='(main)'
         options={{
+          tabBarShowLabel: false,
           headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image source={require("@/assets/images/search.png")} />
+            </View>
+          ),
         }}
       />
-    </Stack>
+
+      <Tabs.Screen
+        name='bid'
+        options={{
+          tabBarShowLabel: false,
+          headerShown: false,
+          href: "/(main)/home",
+          tabBarIcon: ({ color }) => (
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image source={require("@/assets/images/owned.png")} />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name='analytics'
+        options={{
+          tabBarShowLabel: false,
+          headerShown: false,
+          href: "/(main)/home",
+          tabBarIcon: ({ color }) => (
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image source={require("@/assets/images/analytics.png")} />
+            </View>
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name='bookmarked'
+        options={{
+          tabBarShowLabel: false,
+          headerShown: false,
+          href: "/(main)/home",
+          tabBarIcon: ({ color }) => (
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Image source={require("@/assets/images/bookmarked.png")} />
+            </View>
+          ),
+        }}
+      />
+    </Tabs>
   );
 }

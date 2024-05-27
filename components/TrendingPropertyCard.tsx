@@ -1,46 +1,49 @@
 import { Image, StyleSheet, Text, View, ViewBase } from "react-native";
-// import ThemeButton from "./ThemedButton";
+import Separator from "./Separator";
+import { Link, router } from "expo-router";
 
 const TrendingPropertyCard = ({ data }: any) => {
   return (
-    <View style={styles.container}>
-      <Image source={data?.path} style={styles.image} />
-      <View style={styles.textContainer}>
-        <Text style={styles.name}>{data.name}</Text>
-        <Text style={styles.city}>{data.city}</Text>
-        <View style={styles.detailsContainer}>
-          <Text style={styles.details}>{data.sqft} Sqft</Text>
-          <Text style={styles.separator}> ▪ </Text>
-          <Text style={styles.details}>{data.acre} Acre(s)</Text>
-        </View>
-        <View style={styles.detailsContainer}>
-          <Text style={[styles.fractionInvestment]}>
-            {data?.fractionalInvestment ? (
-              <Image
-                source={require("@/assets/images/check.png")}
-                style={styles.crosscheck}
-              />
-            ) : (
-              <Image
-                source={require("@/assets/images/cross.png")}
-                style={styles.crosscheck}
-              />
-            )}
-            <Text style={styles.separator}> </Text>{" "}
-            <Text>Fractional Investment Available</Text>
-          </Text>
-          <Text style={styles.separator}> </Text>
-          <Text style={styles.registered}>
-            <Image
-              source={require("@/assets/images/register.png")}
-              style={styles.crosscheck}
-            />
+    <Link href={`/details/${data.id}`}>
+      <View style={styles.container}>
+        <Image source={data?.path} style={styles.image} />
+        <View style={styles.textContainer}>
+          <Text style={styles.name}>{data.name}</Text>
+          <Text style={styles.city}>{data.city}</Text>
+          <View style={styles.detailsContainer}>
+            <Text style={styles.details}>{data.sqft} Sqft</Text>
+            <Separator />
+            <Text style={styles.details}>{data.acre} Acre(s)</Text>
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text style={[styles.fractionInvestment]}>
+              {data?.fractionalInvestment ? (
+                <Image
+                  source={require("@/assets/images/check.png")}
+                  style={styles.crosscheck}
+                />
+              ) : (
+                <Image
+                  source={require("@/assets/images/cross.png")}
+                  style={styles.crosscheck}
+                />
+              )}
+              <Text style={styles.separator}> </Text>{" "}
+              <Text>Fractional Investment Available</Text>
+            </Text>
             <Text style={styles.separator}> </Text>
-            {data?.registered} people registered
-          </Text>
+            <Text style={styles.registered}>
+              <Image
+                source={require("@/assets/images/register.png")}
+                style={styles.crosscheck}
+              />
+              <Text style={styles.separator}> </Text>
+              {data?.registered} people registered
+            </Text>
+          </View>
         </View>
       </View>
-    </View>
+    </Link>
   );
 };
 
@@ -77,6 +80,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 5,
+    gap: 12,
   },
   details: {
     fontSize: 14,
