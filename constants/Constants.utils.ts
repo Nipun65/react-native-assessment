@@ -11,6 +11,12 @@ const PROPERTYDETAILS = [
     registered: 3,
     path: jorbagh,
     id: 1,
+    details:
+      "This exquisite first-floor apartment is perched on a 515 sqm (617 sq. yds.) plot; the largest plot size of its kind in Jor Bagh, outside the ASI’s limitations and in close proximity to Lodhi Gardens. The apartment faces and has access to a park in the front and the rear providing residents with verdant & serene green views. This recently built 275 sqm (~2,960 sq. ft.) apartment has a beautiful living room with...",
+    totalValue: "$ 3,058,654",
+    pricePerShare: "$ 15,293",
+    availableSlots: "72",
+    fundRaisingEndsIn: "12 days",
   },
   {
     name: "Penthouse Paradise",

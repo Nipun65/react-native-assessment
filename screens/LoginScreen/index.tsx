@@ -63,11 +63,14 @@ const style = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 48,
+    position: "relative",
     backgroundColor: "white",
   },
   btnWrapper: {
+    position: "absolute",
     flexDirection: "column",
     gap: 12,
+    bottom: 6,
   },
   link: {
     color: "#121212BF",
