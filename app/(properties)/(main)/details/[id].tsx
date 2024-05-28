@@ -4,7 +4,7 @@ import {
   GestureHandlerRootView,
   ScrollView,
 } from 'react-native-gesture-handler'
-import { View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import IconWrapper from '@/components/IconWrapper'
 import { Collapsible } from '@/components/Collapsible'
 import FinanceModel from '@/components/FinanaceModal'
@@ -168,7 +168,7 @@ const Details = () => {
               imageBg={false}
             />
             <View>
-              <View
+              <TouchableOpacity
                 style={{
                   flexDirection: 'row',
                   gap: 12,
@@ -201,7 +201,7 @@ const Details = () => {
                     style={{ transform: 'translateX(-20deg)' }}
                   />
                 </View>
-              </View>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -215,13 +215,13 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   name: {
-    fontSize: 32,
+    fontSize: 26,
     fontWeight: '100',
-    fontStyle: 'italic',
+    fontFamily: 'PlayfairDisplay_400Regular_Italic',
     color: '#ffffff',
   },
   city: {
-    fontSize: 32,
+    fontSize: 26,
     fontWeight: '400',
     color: '#ffffff',
     marginLeft: 10,

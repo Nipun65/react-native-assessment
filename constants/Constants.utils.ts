@@ -22,7 +22,7 @@ const PROPERTYDETAILS = [
   },
   {
     name: 'Penthouse Paradise',
-    city: 'New Delhi',
+    city: 'New Delhi, India',
     sqft: 5000,
     acre: 0.7,
     fractionalInvestment: true,
@@ -40,7 +40,7 @@ const PROPERTYDETAILS = [
   },
   {
     name: 'Riverside Mansion',
-    city: 'New Delhi',
+    city: 'New Delhi, India',
     sqft: 8000,
     acre: 1.2,
     fractionalInvestment: true,

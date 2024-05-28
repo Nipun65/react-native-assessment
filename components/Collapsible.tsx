@@ -21,8 +21,8 @@ export function Collapsible({
   title,
 }: PropsWithChildren & {
   title: string
-  subTitle: string
-  image: React.ReactNode
+  subTitle?: string
+  image?: React.ReactNode
   imageBg?: boolean
 }) {
   const [isOpen, setIsOpen] = useState(false)

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { StyleSheet, View, useWindowDimensions } from 'react-native'
+import { View, useWindowDimensions } from 'react-native'
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view'
 import FeaturedCard from './FeaturedCard'
 import { FEATUREDPROPERTIES, KEYMAPPING } from '@/constants/Constants.utils'
@@ -60,10 +60,4 @@ export const FeaturedTab = () => {
   )
 }
 
-const styles = StyleSheet.create({
-  trendingWrapper: {
-    paddingTop: 32,
-    paddingHorizontal: 20,
-  },
-})
 export default FeatureProperties

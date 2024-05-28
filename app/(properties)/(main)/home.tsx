@@ -65,10 +65,10 @@ const styles = StyleSheet.create({
     textDecorationStyle: 'solid',
     fontSize: 28,
     fontWeight: '300',
-    fontStyle: 'italic',
     paddingHorizontal: 18,
     paddingVertical: 12,
     letterSpacing: -2,
+    fontFamily: 'PlayfairDisplay_400Regular_Italic',
   },
   trendingWrapper: {
     paddingTop: 32,

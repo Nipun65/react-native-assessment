@@ -2,6 +2,7 @@ import { Text, type TextProps, StyleSheet, View } from 'react-native'
 import { useThemeColor } from '@/hooks/useThemeColor'
 import {
   PlayfairDisplay_400Regular,
+  PlayfairDisplay_400Regular_Italic,
   useFonts,
 } from '@expo-google-fonts/playfair-display'
 
@@ -21,6 +22,7 @@ export function ThemedText({
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text')
   let [fontsLoaded, fontError] = useFonts({
     PlayfairDisplay_400Regular,
+    PlayfairDisplay_400Regular_Italic,
   })
 
   if (!fontsLoaded && !fontError) {

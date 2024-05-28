@@ -1,7 +1,7 @@
-import LoginScreen from "@/screens/LoginScreen";
+import LoginScreen from '@/screens/LoginScreen'
 
 const Login = () => {
-  return <LoginScreen />;
-};
+  return <LoginScreen />
+}
 
-export default Login;
+export default Login
