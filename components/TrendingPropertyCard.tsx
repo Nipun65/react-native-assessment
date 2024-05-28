@@ -1,6 +1,7 @@
-import { Image, StyleSheet, Text, View, ViewBase } from "react-native";
-import Separator from "./Separator";
-import { Link, router } from "expo-router";
+import { Image, StyleSheet, View } from 'react-native'
+import Separator from './Separator'
+import { Link } from 'expo-router'
+import { ThemedText } from './ThemedText'
 
 const TrendingPropertyCard = ({ data }: any) => {
   return (
@@ -8,113 +9,111 @@ const TrendingPropertyCard = ({ data }: any) => {
       <View style={styles.container}>
         <Image source={data?.path} style={styles.image} />
         <View style={styles.textContainer}>
-          <Text style={styles.name}>{data.name}</Text>
-          <Text style={styles.city}>{data.city}</Text>
+          <ThemedText style={styles.name}>{data.name}</ThemedText>
+          <ThemedText style={styles.city}>{data.city}</ThemedText>
           <View style={styles.detailsContainer}>
-            <Text style={styles.details}>{data.sqft} Sqft</Text>
+            <ThemedText style={styles.details}>{data.sqft} Sqft</ThemedText>
             <Separator />
-            <Text style={styles.details}>{data.acre} Acre(s)</Text>
+            <ThemedText style={styles.details}>{data.acre} Acre(s)</ThemedText>
           </View>
           <View style={styles.detailsContainer}>
-            <Text style={[styles.fractionInvestment]}>
+            <ThemedText style={[styles.fractionInvestment]}>
               {data?.fractionalInvestment ? (
                 <Image
-                  source={require("@/assets/images/check.png")}
+                  source={require('@/assets/images/check.png')}
                   style={styles.crosscheck}
                 />
               ) : (
                 <Image
-                  source={require("@/assets/images/cross.png")}
+                  source={require('@/assets/images/cross.png')}
                   style={styles.crosscheck}
                 />
               )}
-              <Text style={styles.separator}> </Text>{" "}
-              <Text>Fractional Investment Available</Text>
-            </Text>
-            <Text style={styles.separator}> </Text>
-            <Text style={styles.registered}>
+              <ThemedText style={styles.separator}> </ThemedText>{' '}
+              <ThemedText style={styles.fractionInvestment}>
+                Fractional Investment Available
+              </ThemedText>
+            </ThemedText>
+            <ThemedText style={styles.separator}> </ThemedText>
+            <ThemedText style={styles.registered}>
               <Image
-                source={require("@/assets/images/register.png")}
+                source={require('@/assets/images/register.png')}
                 style={styles.crosscheck}
               />
-              <Text style={styles.separator}> </Text>
+              <ThemedText style={styles.separator}> </ThemedText>
               {data?.registered} people registered
-            </Text>
+            </ThemedText>
           </View>
         </View>
       </View>
     </Link>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
-    position: "relative",
+    position: 'relative',
   },
   image: {
-    // width: 300,
-    // height: 200,
-    // resizeMode: "contain",
-    // flex: 1,
-    // aspectRatio: 4 / 2,
+    width: 400,
+    height: 250,
   },
   textContainer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 10,
     left: 10,
-    // backgroundColor: "rgba(255, 255, 255, 0.8)",
     padding: 10,
     borderRadius: 5,
   },
   name: {
-    color: "white",
+    color: 'white',
     fontSize: 24,
-    fontWeight: "600",
+    fontWeight: '600',
   },
   city: {
-    color: "white",
+    color: 'white',
     fontSize: 16,
-    fontWeight: "100",
+    fontWeight: '100',
   },
   detailsContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginTop: 5,
     gap: 12,
   },
   details: {
     fontSize: 14,
-    color: "#FFFFFF99",
+    color: '#FFFFFF99',
   },
   separator: {
     marginHorizontal: 5,
   },
   fractionInvestment: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     gap: 2,
-    flexDirection: "row",
-    backgroundColor: "#EBE7D32A",
-    color: "#EBE7D3",
+    flexDirection: 'row',
+    color: '#EBE7D3',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 2,
+    fontSize: 10,
   },
   registered: {
-    backgroundColor: "#EBE7D3",
-    color: "#121212",
+    backgroundColor: '#EBE7D3',
+    color: '#121212',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 2,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
+    fontSize: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   crosscheck: {
-    height: 20,
-    width: 20,
+    height: 10,
+    width: 10,
   },
-});
+})
 
-export default TrendingPropertyCard;
+export default TrendingPropertyCard

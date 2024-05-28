@@ -1,27 +1,31 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const ThemeButton = ({ title, handleButton, type, children }: any) => {
+const ThemeButton = ({ title, handleButton, type, children, styles }: any) => {
   return (
     <TouchableOpacity
       onPress={handleButton}
       style={type === "secondary" ? styleComp.secondary : styleComp.default}
     >
       <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: 12,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+        style={[
+          {
+            display: "flex",
+            flexDirection: "row",
+            gap: 12,
+            alignItems: "center",
+            justifyContent: "center",
+          },
+          styles,
+        ]}
       >
         {children}
         <Text
-          style={
+          style={[
             type === "secondary"
               ? styleComp.secondaryText
-              : styleComp.defaultText
-          }
+              : styleComp.defaultText,
+            styles,
+          ]}
         >
           {title}
         </Text>

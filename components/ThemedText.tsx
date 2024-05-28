@@ -1,12 +1,15 @@
-import { Text, type TextProps, StyleSheet } from 'react-native';
-
-import { useThemeColor } from '@/hooks/useThemeColor';
+import { Text, type TextProps, StyleSheet, View } from 'react-native'
+import { useThemeColor } from '@/hooks/useThemeColor'
+import {
+  PlayfairDisplay_400Regular,
+  useFonts,
+} from '@expo-google-fonts/playfair-display'
 
 export type ThemedTextProps = TextProps & {
-  lightColor?: string;
-  darkColor?: string;
-  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
-};
+  lightColor?: string
+  darkColor?: string
+  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link'
+}
 
 export function ThemedText({
   style,
@@ -15,7 +18,20 @@ export function ThemedText({
   type = 'default',
   ...rest
 }: ThemedTextProps) {
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text')
+  let [fontsLoaded, fontError] = useFonts({
+    PlayfairDisplay_400Regular,
+  })
+
+  if (!fontsLoaded && !fontError) {
+    return (
+      <View>
+        <Text
+          style={{ backgroundColor: '#dddddd66', height: 6, width: 42 }}
+        ></Text>
+      </View>
+    )
+  }
 
   return (
     <Text
@@ -30,13 +46,13 @@ export function ThemedText({
       ]}
       {...rest}
     />
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   default: {
     fontSize: 16,
-    lineHeight: 24,
+    fontFamily: 'PlayfairDisplay_400Regular',
   },
   defaultSemiBold: {
     fontSize: 16,
@@ -57,4 +73,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#0a7ea4',
   },
-});
+})

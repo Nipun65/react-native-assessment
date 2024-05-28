@@ -1,152 +1,178 @@
-import React from "react";
-import { View, Image, Text, StyleSheet, ViewBase } from "react-native";
-import Separator from "./Separator";
+import React from 'react'
+import { Link } from 'expo-router'
+import { View, Image, StyleSheet } from 'react-native'
+import Separator from './Separator'
+import { ThemedText } from './ThemedText'
 
 const FeaturedCard = ({ property, tabName }: any) => {
   return (
-    <View style={styles.card}>
-      <View style={styles.imageContainer}>
-        <Image
-          source={property.path}
-          blurRadius={tabName === "coming soon" ? 1 : 0}
-          style={[styles.image]}
-        />
-      </View>
-      <View style={styles.propertyDetails}>
-        <View>
-          <Text>
-            <Text
-              style={[
-                styles.headingName,
-                (tabName === "coming soon" || tabName === "closed") &&
-                  styles.disabled,
-              ]}
-            >
-              {property?.name},{" "}
-            </Text>
-            <Text style={styles.headingCity}> {property?.city}</Text>
-          </Text>
+    <Link href={`/details/${property?.id}`}>
+      <View style={styles.card}>
+        <View style={styles.imageContainer}>
+          <Image
+            source={property.path}
+            blurRadius={tabName === 'coming soon' ? 1 : 0}
+            style={[styles.image]}
+          />
         </View>
-        <View style={[styles.column, { marginTop: 12 }]}>
+        <View style={styles.propertyDetails}>
           <View>
-            <Text style={styles.info}>Starting At</Text>
-            <Text
-              style={[
-                styles.details,
-                (tabName === "coming soon" || tabName === "closed") &&
-                  styles.disabled,
-              ]}
-            >
-              {property.startingAt}
-            </Text>
-          </View>
-          <View>
-            <Text style={styles.info}>Total Value</Text>
-            <Text
-              style={[
-                styles.details,
-                (tabName === "coming soon" || tabName === "closed") &&
-                  styles.disabled,
-              ]}
-            >
-              {property.totalValue}
-            </Text>
-          </View>
-
-          <View>
-            <Text style={styles.info}>People Registered</Text>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <Text
+            <ThemedText>
+              <ThemedText
                 style={[
-                  styles.details,
-                  (tabName === "coming soon" || tabName === "closed") &&
+                  styles.headingName,
+                  (tabName === 'coming soon' || tabName === 'closed') &&
                     styles.disabled,
                 ]}
               >
-                {tabName === "coming soon" ? (
-                  <Text style={{ textAlign: "center", flex: 1 }}>-</Text>
-                ) : (
-                  property.registered
+                {property?.name},{' '}
+              </ThemedText>
+              <ThemedText
+                style={[
+                  styles.headingCity,
+                  (tabName === 'coming soon' || tabName === 'closed') &&
+                    styles.disabled,
+                ]}
+              >
+                {property?.city}
+              </ThemedText>
+            </ThemedText>
+          </View>
+          <View style={[styles.row, { marginTop: 12 }]}>
+            <View>
+              <ThemedText style={styles.info}>Starting At</ThemedText>
+              <ThemedText
+                style={[
+                  styles.details,
+                  (tabName === 'coming soon' || tabName === 'closed') &&
+                    styles.disabled,
+                ]}
+              >
+                {property.startingAt}
+              </ThemedText>
+            </View>
+            <View>
+              <ThemedText style={styles.info}>Total Value</ThemedText>
+              <ThemedText
+                style={[
+                  styles.details,
+                  (tabName === 'coming soon' || tabName === 'closed') &&
+                    styles.disabled,
+                ]}
+              >
+                {property.totalValue}
+              </ThemedText>
+            </View>
+
+            <View>
+              <ThemedText style={styles.info}>People Registered</ThemedText>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <ThemedText
+                  style={[
+                    styles.details,
+                    (tabName === 'coming soon' || tabName === 'closed') &&
+                      styles.disabled,
+                  ]}
+                >
+                  {tabName === 'coming soon' ? (
+                    <ThemedText
+                      style={[
+                        { textAlign: 'center', flex: 1 },
+                        (tabName === 'coming soon' || tabName === 'closed') &&
+                          styles.disabled,
+                      ]}
+                    >
+                      -
+                    </ThemedText>
+                  ) : (
+                    property.registered
+                  )}
+                </ThemedText>
+                {tabName !== 'coming soon' && (
+                  <View>
+                    <ThemedText
+                      style={{
+                        color:
+                          tabName === 'coming soon' || tabName === 'closed'
+                            ? '#1212124D'
+                            : '#12121259',
+                      }}
+                    >
+                      /
+                      <ThemedText
+                        style={[
+                          styles.details,
+                          (tabName === 'coming soon' || tabName === 'closed') &&
+                            styles.disabled,
+                        ]}
+                      >
+                        {property.totalRegistration}
+                      </ThemedText>
+                    </ThemedText>
+                  </View>
                 )}
-              </Text>
-              {tabName !== "coming soon" && (
-                <View>
-                  <Text
-                    style={{
-                      color:
-                        tabName === "coming soon" || tabName === "closed"
-                          ? "#1212124D"
-                          : "#12121259",
-                    }}
-                  >
-                    /
-                    <Text style={styles.details}>
-                      {property.totalRegistration}
-                    </Text>
-                  </Text>
-                </View>
-              )}
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.row}>
+            <View>
+              <ThemedText
+                style={[
+                  styles.bottomdetails,
+                  (tabName === 'coming soon' || tabName === 'closed') &&
+                    styles.disabled,
+                ]}
+              >
+                {property.bedrooms} Bedrooms
+              </ThemedText>
+            </View>
+            <Separator />
+            <View>
+              <ThemedText
+                style={[
+                  styles.bottomdetails,
+                  (tabName === 'coming soon' || tabName === 'closed') &&
+                    styles.disabled,
+                ]}
+              >
+                {property.bath} Bath
+              </ThemedText>
+            </View>
+            <Separator />
+            <View>
+              <ThemedText
+                style={[
+                  styles.bottomdetails,
+                  (tabName === 'coming soon' || tabName === 'closed') &&
+                    styles.disabled,
+                ]}
+              >
+                {property.sqft} Sqft
+              </ThemedText>
+            </View>
+            <Separator />
+            <View>
+              <ThemedText
+                style={[
+                  styles.bottomdetails,
+                  (tabName === 'coming soon' || tabName === 'closed') &&
+                    styles.disabled,
+                ]}
+              >
+                {property.acre} Acre (s)
+              </ThemedText>
             </View>
           </View>
         </View>
-
-        <View style={styles.column}>
-          <View>
-            <Text
-              style={[
-                styles.bottomdetails,
-                (tabName === "coming soon" || tabName === "closed") &&
-                  styles.disabled,
-              ]}
-            >
-              {property.bedrooms} Bedrooms
-            </Text>
-          </View>
-          <Separator />
-          <View>
-            <Text
-              style={[
-                styles.bottomdetails,
-                (tabName === "coming soon" || tabName === "closed") &&
-                  styles.disabled,
-              ]}
-            >
-              {property.bedrooms} Bath
-            </Text>
-          </View>
-          <Separator />
-          <View>
-            <Text
-              style={[
-                styles.bottomdetails,
-                (tabName === "coming soon" || tabName === "closed") &&
-                  styles.disabled,
-              ]}
-            >
-              {property.bedrooms} Sqft
-            </Text>
-          </View>
-          <Separator />
-          <View>
-            <Text
-              style={[
-                styles.bottomdetails,
-                (tabName === "coming soon" || tabName === "closed") &&
-                  styles.disabled,
-              ]}
-            >
-              {property.bedrooms} Acre
-            </Text>
-          </View>
-        </View>
       </View>
-    </View>
-  );
-};
+    </Link>
+  )
+}
 
 const styles = StyleSheet.create({
   card: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginVertical: 8,
     paddingVertical: 10,
     paddingHorizontal: 6,
@@ -160,47 +186,46 @@ const styles = StyleSheet.create({
   },
   propertyDetails: {
     flex: 1,
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   details: {
-    fontWeight: "500",
+    fontWeight: '500',
     fontSize: 10,
   },
-  column: {
+  row: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   headingName: {
-    color: "#121212",
+    color: '#121212',
     fontSize: 14,
   },
   headingCity: {
-    fontWeight: "100",
-    color: "#121212",
+    fontWeight: '100',
+    color: '#121212',
     fontSize: 14,
   },
   price: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 8,
   },
   info: {
-    color: "#12121259",
+    color: '#12121259',
     fontSize: 10,
     marginBottom: 4,
   },
   bottomdetails: {
     fontSize: 10,
-    color: "#121212BF",
+    color: '#121212BF',
   },
   separator: {
     marginHorizontal: 1,
   },
   disabled: {
-    color: "#1212124D",
+    color: '#1212124D',
   },
-  imageblue: {},
-});
+})
 
-export default FeaturedCard;
+export default FeaturedCard
