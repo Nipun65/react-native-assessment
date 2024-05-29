@@ -33,7 +33,7 @@ const FinanceOptions = ({ detail }: FinanceOptionsProps) => {
               >
                 1 Share
               </ThemedText>{' '}
-              (token) = $ 15,293
+              (token) = {detail?.pricePerShare}
             </ThemedText>
           </View>
           <View style={styles.priceContainer}>
@@ -45,7 +45,7 @@ const FinanceOptions = ({ detail }: FinanceOptionsProps) => {
             >
               {detail?.totalValue}
             </ThemedText>
-            <ThemedText style={styles.price}>
+            <ThemedText style={[styles.price, { fontSize: 18 }]}>
               {detail?.pricePerShare}
             </ThemedText>
           </View>

@@ -21,9 +21,11 @@ const FeatureProperties = ({ tabName }: FeaturePropertiesProps) => {
       {FEATUREDPROPERTIES[KEYMAPPING[tabName]].map(
         (property: PropertyDetails) => {
           return (
-            <View key={property.name}>
-              <FeaturedCard property={property} tabName={tabName} />
-            </View>
+            <FeaturedCard
+              property={property}
+              tabName={tabName}
+              key={property.name}
+            />
           )
         }
       )}

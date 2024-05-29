@@ -22,28 +22,27 @@ const FeaturedCard = ({ property, tabName }: FeaturedCardProps) => {
           />
         </View>
         <View style={styles.propertyDetails}>
-          <View>
-            <ThemedText>
-              <ThemedText
-                style={[
-                  styles.headingName,
-                  (tabName === 'coming soon' || tabName === 'closed') &&
-                    styles.disabled,
-                ]}
-              >
-                {property?.name},{' '}
-              </ThemedText>
-              <ThemedText
-                style={[
-                  styles.headingCity,
-                  (tabName === 'coming soon' || tabName === 'closed') &&
-                    styles.disabled,
-                ]}
-              >
-                {property?.city}
-              </ThemedText>
+          <ThemedText>
+            <ThemedText
+              style={[
+                styles.headingName,
+                (tabName === 'coming soon' || tabName === 'closed') &&
+                  styles.disabled,
+              ]}
+            >
+              {property?.name},{' '}
             </ThemedText>
-          </View>
+            <ThemedText
+              style={[
+                styles.headingCity,
+                (tabName === 'coming soon' || tabName === 'closed') &&
+                  styles.disabled,
+              ]}
+            >
+              {property?.city}
+            </ThemedText>
+          </ThemedText>
+
           <View style={[styles.row, { marginTop: 12 }]}>
             <View>
               <ThemedText style={styles.info}>Starting At</ThemedText>
@@ -72,7 +71,12 @@ const FeaturedCard = ({ property, tabName }: FeaturedCardProps) => {
 
             <View>
               <ThemedText style={styles.info}>People Registered</ThemedText>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}
+              >
                 <ThemedText
                   style={[
                     styles.details,
@@ -83,7 +87,7 @@ const FeaturedCard = ({ property, tabName }: FeaturedCardProps) => {
                   {tabName === 'coming soon' ? (
                     <ThemedText
                       style={[
-                        { textAlign: 'center', flex: 1 },
+                        { textAlign: 'center' },
                         (tabName === 'coming soon' || tabName === 'closed') &&
                           styles.disabled,
                       ]}
@@ -95,27 +99,19 @@ const FeaturedCard = ({ property, tabName }: FeaturedCardProps) => {
                   )}
                 </ThemedText>
                 {tabName !== 'coming soon' && (
-                  <View>
-                    <ThemedText
-                      style={{
+                  <ThemedText
+                    style={[
+                      styles.details,
+                      {
                         color:
                           tabName === 'coming soon' || tabName === 'closed'
                             ? '#1212124D'
                             : '#12121259',
-                      }}
-                    >
-                      /
-                      <ThemedText
-                        style={[
-                          styles.details,
-                          (tabName === 'coming soon' || tabName === 'closed') &&
-                            styles.disabled,
-                        ]}
-                      >
-                        {property.totalRegistration}
-                      </ThemedText>
-                    </ThemedText>
-                  </View>
+                      },
+                    ]}
+                  >
+                    /{property.totalRegistration}
+                  </ThemedText>
                 )}
               </View>
             </View>

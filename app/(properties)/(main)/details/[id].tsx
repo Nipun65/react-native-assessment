@@ -16,6 +16,7 @@ import {
 } from '@/constants/Constants.utils'
 import { ThemedText } from '@/components/ThemedText'
 import { PropertyDetails } from '@/Interfaces'
+import ProgressBar from '@/components/ProgressBar'
 
 const Details = () => {
   const { id } = useLocalSearchParams()
@@ -84,8 +85,8 @@ const Details = () => {
                 </View>
               </View>
             </View>
-            <Image source={detail?.path} />
-            <View style={{ position: 'absolute', bottom: 6, left: 6 }}>
+            <Image source={detail?.path} style={styles.contentimg} />
+            <View style={{ position: 'absolute', bottom: 12, left: 16 }}>
               <ThemedText style={styles.name}>{detail?.name}</ThemedText>
               <ThemedText style={styles.city}>{detail?.city}</ThemedText>
             </View>
@@ -100,7 +101,10 @@ const Details = () => {
           >
             <View style={styles.header}>
               <ThemedText style={styles.headerText}>
-                First Floor Apartment in <ThemedText>{detail?.name}</ThemedText>
+                First Floor Apartment in&nbsp;
+                <ThemedText style={styles.headerText}>
+                  {detail?.name}
+                </ThemedText>
               </ThemedText>
               <ThemedText style={styles.infoText}>{detail?.details}</ThemedText>
             </View>
@@ -140,6 +144,7 @@ const Details = () => {
                   Ends in 12 Days
                 </ThemedText>
               </View>
+              <ProgressBar />
             </View>
 
             {detail && (
@@ -243,12 +248,13 @@ const styles = StyleSheet.create({
     height: 15,
   },
   header: {
+    backgroundColor: '#ffffff',
     paddingHorizontal: 25,
     paddingVertical: 15,
   },
   headerText: {
     letterSpacing: -1,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '300',
   },
   infoText: {
@@ -305,6 +311,11 @@ const styles = StyleSheet.create({
     fontSize: 10,
     marginTop: 3,
     color: '#ffffff',
+  },
+  contentimg: {
+    shadowColor: '#202020',
+    shadowOffset: { width: 0, height: 0 },
+    shadowRadius: 5,
   },
 })
 
