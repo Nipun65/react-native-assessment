@@ -1,8 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { ThemedText } from './ThemedText'
 import Separator from './Separator'
+import { PropertyDetails } from '@/Interfaces'
 
-const PropertyDetail = ({ property }: any) => {
+interface PropertyDetailProps {
+  property: PropertyDetails
+}
+
+const PropertyDetail = ({ property }: PropertyDetailProps) => {
   return (
     <View style={styles.row}>
       <View>

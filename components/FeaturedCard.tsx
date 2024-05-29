@@ -3,8 +3,14 @@ import { Link } from 'expo-router'
 import { View, Image, StyleSheet } from 'react-native'
 import Separator from './Separator'
 import { ThemedText } from './ThemedText'
+import { PropertyDetails } from '@/Interfaces'
 
-const FeaturedCard = ({ property, tabName }: any) => {
+interface FeaturedCardProps {
+  property: PropertyDetails
+  tabName: string
+}
+
+const FeaturedCard = ({ property, tabName }: FeaturedCardProps) => {
   return (
     <Link href={`/details/${property?.id}`}>
       <View style={styles.card}>

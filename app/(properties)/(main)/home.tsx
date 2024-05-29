@@ -8,6 +8,7 @@ import HorizotalLine from '@/components/HorizontalLine'
 import { ThemedText } from '@/components/ThemedText'
 import TrendingPropertyCard from '@/components/TrendingPropertyCard'
 import { PROPERTYDETAILS } from '@/constants/Constants.utils'
+import { PropertyDetails } from '@/Interfaces'
 
 const Main = () => {
   return (
@@ -39,7 +40,7 @@ const Main = () => {
               contentContainerStyle={{ flexDirection: 'row' }}
               style={{ gap: 2 }}
             >
-              {PROPERTYDETAILS.map((property: any) => {
+              {PROPERTYDETAILS.map((property: PropertyDetails) => {
                 return (
                   <View key={property?.id}>
                     <TrendingPropertyCard data={property} />

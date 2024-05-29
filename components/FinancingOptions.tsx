@@ -1,8 +1,13 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, Image } from 'react-native'
 import { ThemedText } from './ThemedText'
+import { PropertyDetails } from '@/Interfaces'
 
-const FinanceOptions = ({ detail }: any) => {
+interface FinanceOptionsProps {
+  detail: PropertyDetails
+}
+
+const FinanceOptions = ({ detail }: FinanceOptionsProps) => {
   return (
     <View>
       <View style={styles.wrapper}>

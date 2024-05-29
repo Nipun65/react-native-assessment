@@ -2,8 +2,13 @@ import { Image, StyleSheet, View } from 'react-native'
 import Separator from './Separator'
 import { Link } from 'expo-router'
 import { ThemedText } from './ThemedText'
+import { PropertyDetails } from '@/Interfaces'
 
-const TrendingPropertyCard = ({ data }: any) => {
+interface TrendingPropertyCardProps {
+  data: PropertyDetails
+}
+
+const TrendingPropertyCard = ({ data }: TrendingPropertyCardProps) => {
   return (
     <Link href={`/details/${data.id}`}>
       <View style={styles.container}>

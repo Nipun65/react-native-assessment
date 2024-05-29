@@ -1,19 +1,32 @@
 import * as React from 'react'
 import { View, useWindowDimensions } from 'react-native'
-import { TabView, SceneMap, TabBar } from 'react-native-tab-view'
+import {
+  TabView,
+  SceneMap,
+  TabBar,
+  SceneRendererProps,
+  NavigationState,
+} from 'react-native-tab-view'
 import FeaturedCard from './FeaturedCard'
 import { FEATUREDPROPERTIES, KEYMAPPING } from '@/constants/Constants.utils'
+import { PropertyDetails } from '@/Interfaces'
 
-const FeatureProperties = ({ tabName }: any) => {
+interface FeaturePropertiesProps {
+  tabName: string
+}
+
+const FeatureProperties = ({ tabName }: FeaturePropertiesProps) => {
   return (
     <View>
-      {FEATUREDPROPERTIES[KEYMAPPING[tabName]].map((property: any) => {
-        return (
-          <View key={property.name}>
-            <FeaturedCard property={property} tabName={tabName} />
-          </View>
-        )
-      })}
+      {FEATUREDPROPERTIES[KEYMAPPING[tabName]].map(
+        (property: PropertyDetails) => {
+          return (
+            <View key={property.name}>
+              <FeaturedCard property={property} tabName={tabName} />
+            </View>
+          )
+        }
+      )}
     </View>
   )
 }
@@ -24,11 +37,13 @@ const renderScene = SceneMap({
   third: () => <FeatureProperties tabName="closed" />,
 })
 
-const renderTabBar = (props: any) => {
+const renderTabBar = (
+  props: SceneRendererProps & { navigationState: NavigationState<any> }
+) => {
   return (
     <TabBar
       {...props}
-      indicatorStyle={{ color: '#D6D2C0' }}
+      indicatorStyle={{ backgroundColor: '#D6D2C0' }}
       style={{
         backgroundColor: 'white',
         elevation: 0,

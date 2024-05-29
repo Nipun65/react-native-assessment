@@ -1,7 +1,8 @@
 import jorbagh from '@/assets/images/jorbagh.png'
 import civillines from '@/assets/images/civillines.png'
+import { FeaturedProperties, PropertyDetails } from '@/Interfaces'
 
-const PROPERTYDETAILS = [
+const PROPERTYDETAILS: PropertyDetails[] = [
   {
     name: 'Jor Bagh',
     city: 'New Delhi, India',
@@ -57,7 +58,8 @@ const PROPERTYDETAILS = [
     fundRaisingEndsIn: '11 days',
   },
 ]
-const FEATUREDPROPERTIES: { [key: string]: any } = {
+
+const FEATUREDPROPERTIES: FeaturedProperties = {
   ongoing: [
     {
       name: 'Sea View Haven',

@@ -15,6 +15,7 @@ import {
   PROPERTYDETAILS,
 } from '@/constants/Constants.utils'
 import { ThemedText } from '@/components/ThemedText'
+import { PropertyDetails } from '@/Interfaces'
 
 const Details = () => {
   const { id } = useLocalSearchParams()
@@ -24,7 +25,9 @@ const Details = () => {
     ...FEATUREDPROPERTIES.comingsoon,
     ...FEATUREDPROPERTIES.closed,
   ]
-  const detail = allProperties.find((property: any) => property.id == id)
+  const detail = allProperties.find(
+    (property: PropertyDetails) => property.id == id
+  )
 
   return (
     <GestureHandlerRootView>
@@ -139,34 +142,42 @@ const Details = () => {
               </View>
             </View>
 
-            <Collapsible
-              title="Financing Options"
-              subTitle="Options for both Owners and Shareholders"
-              children={<FinanceOptions detail={detail} />}
-              image={
-                <Image source={require('@/assets/images/financeOption.png')} />
-              }
-            />
-            <Collapsible
-              title="Property Details"
-              subTitle="Flat type, square footage, location benefits, ame..."
-              children={<PropertyDetail property={detail} />}
-              image={
-                <Image source={require('@/assets/images/propertydetail.png')} />
-              }
-            />
-            <Collapsible
-              title="Financial Model"
-              subTitle="Indicators for capital appreciation, monthly yield etc."
-              children={<FinanceModel />}
-              image={
-                <Image
-                  source={require('@/assets/images/dollar.png')}
-                  style={{ height: 32, width: 32 }}
+            {detail && (
+              <>
+                <Collapsible
+                  title="Financing Options"
+                  subTitle="Options for both Owners and Shareholders"
+                  children={<FinanceOptions detail={detail} />}
+                  image={
+                    <Image
+                      source={require('@/assets/images/financeOption.png')}
+                    />
+                  }
                 />
-              }
-              imageBg={false}
-            />
+                <Collapsible
+                  title="Property Details"
+                  subTitle="Flat type, square footage, location benefits, ame..."
+                  children={<PropertyDetail property={detail} />}
+                  image={
+                    <Image
+                      source={require('@/assets/images/propertydetail.png')}
+                    />
+                  }
+                />
+                <Collapsible
+                  title="Financial Model"
+                  subTitle="Indicators for capital appreciation, monthly yield etc."
+                  children={<FinanceModel />}
+                  image={
+                    <Image
+                      source={require('@/assets/images/dollar.png')}
+                      style={{ height: 32, width: 32 }}
+                    />
+                  }
+                  imageBg={false}
+                />
+              </>
+            )}
             <View>
               <TouchableOpacity
                 style={{
